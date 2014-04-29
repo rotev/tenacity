@@ -111,6 +111,8 @@ module Tenacity
 
     # Shamelessly copied from http://redcorundum.blogspot.com/2006/05/kernelqualifiedconstget.html
     def qualified_const_get(clazz)
+      return nil if clazz.nil?
+      
       path = clazz.to_s.split('::')
       from_root = path[0].empty?
 
