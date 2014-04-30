@@ -18,7 +18,7 @@ module Tenacity
     def _t_verify_associates_exist
       associations_requiring_associate_validation.each do |association|
         associate_id = self.send(association.foreign_key)
-        unless associate_id.nil?
+        unless associate_id.blank?
           associate_class = association.associate_class(self)
           associate = associate_class._t_find(_t_serialize(associate_id, association))
           raise ObjectDoesNotExistError.new("#{associate_class} object with an id of #{associate_id} does not exist!") if associate.nil?
